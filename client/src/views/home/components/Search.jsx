@@ -12,18 +12,27 @@ const SwitchComponent = () => {
   return (
     <View style={styles.view}>
       <SearchBar
+        style={styles.searchbar}
         placeholder="洗衣"
         onChangeText={updateSearch}
         value={search}
+        containerStyle={{
+          backgroundColor: '#FFCF07',
+          margin: 0,
+
+          borderWidth: 0, //no effect
+          shadowColor: 'white', //no effect
+          borderBottomColor: 'transparent',
+          borderTopColor: 'transparent',
+        }}
+        inputContainerStyle={{backgroundColor: 'white', margin: 0}}
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  view: {
-    marginLeft: 40,
-  },
+  view: {},
 });
 
 export default SwitchComponent;
