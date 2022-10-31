@@ -1,5 +1,5 @@
 import {View, Text, StatusBar} from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../views/home/index';
 import MessageScreen from '../views/message/index';
@@ -11,7 +11,7 @@ const Index = () => {
 
   return (
     <>
-      <StatusBar backgroundColor={'#FFFFFF'} />
+      <StatusBar backgroundColor={'#FFCF07'} />
       <Tab.Navigator
         screenOptions={({route}) => ({
           header: () => {
@@ -36,6 +36,7 @@ const Index = () => {
             } else {
               iconName = focused ? 'happy' : 'happy-outline';
             }
+
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarActiveTintColor: '#FFCF07',
@@ -48,17 +49,7 @@ const Index = () => {
           options={{tabBarBadge: 3}}
         />
         <Tab.Screen name="Shopping" component={ShoppingScreen} />
-        <Tab.Screen
-          name="Me"
-          component={MeScreen}
-          listeners={{
-            tabPress: e => {
-              // Prevent default action
-              console.log(e);
-              e.preventDefault();
-            },
-          }}
-        />
+        <Tab.Screen name="Me" component={MeScreen} />
       </Tab.Navigator>
     </>
   );
