@@ -11,7 +11,7 @@ import {getCommodity} from '../../../api/home';
 import {useEffect} from 'react';
 import {useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-const Cards = () => {
+const Cards = props => {
   const [base64Image, setBase64Image] = useState();
   const [CommodityData, setCommodityData] = useState([]);
   useEffect(() => {
@@ -22,6 +22,7 @@ const Cards = () => {
   }, []);
   const cardclick = id => {
     alert(id);
+    console.log(props);
   };
   return (
     <>
@@ -30,10 +31,16 @@ const Cards = () => {
           {CommodityData.map(item => {
             return (
               <TouchableOpacity
+                key={item.shop_sn}
                 onPress={() => {
-                  cardclick(item.shop_sn);
+                  props.navigation.navigate('Detail', {
+                    shop_sn: item.shop_sn,
+                    shop_title: item.shop_title,
+                    shop_stars: item.shop_stars,
+                    shop_product_url: item.product_url,
+                  });
                 }}>
-                <Card key={item.shop_sn}>
+                <Card>
                   <View style={styles.tabstyle}>
                     <Image
                       style={styles.image}
@@ -67,7 +74,7 @@ const Cards = () => {
                                 <Ionicons
                                   name="star"
                                   color="#E5E5E5"
-                                  key={i}
+                                  key={i + 5}
                                 />,
                               );
                             }

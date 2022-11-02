@@ -11,10 +11,11 @@ import {View, Text} from 'react-native';
 import {Button} from '@rneui/themed';
 import {NavigationContainer} from '@react-navigation/native';
 import Index from './src/layout';
+import AppRouter from './src/layout/approuter';
 const App = () => {
   return (
     <NavigationContainer>
-      <Index></Index>
+      <AppRouter></AppRouter>
     </NavigationContainer>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react';
 const Shopping = () => {
   return (
     <View>
-      <Text>购物车</Text>
+      <Text>订单页</Text>
     </View>
   );
 };

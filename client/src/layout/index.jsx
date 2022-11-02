@@ -23,7 +23,7 @@ const Index = () => {
               : route.name === 'Message'
               ? '消息页'
               : route.name === 'Shopping'
-              ? '购物车'
+              ? '订单'
               : '我的',
           tabBarIcon: ({focused, color, size}) => {
             let iconName;
@@ -32,7 +32,7 @@ const Index = () => {
             } else if (route.name === 'Message') {
               iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
             } else if (route.name === 'Shopping') {
-              iconName = focused ? 'cart' : 'cart-outline';
+              iconName = focused ? 'md-menu-sharp' : 'md-menu-outline';
             } else {
               iconName = focused ? 'happy' : 'happy-outline';
             }
