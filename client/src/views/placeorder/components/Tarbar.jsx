@@ -17,7 +17,7 @@ const Header = props => {
     <HeaderRNE
       backgroundColor="#FFCF07"
       leftComponent={
-        <View>
+        <View style={styles.titleleft}>
           <TouchableOpacity
             style={{marginLeft: 10}}
             onPress={() => {
@@ -25,7 +25,7 @@ const Header = props => {
             }}>
             <Ionicons name="arrow-back-sharp" color="white" size={30} />
           </TouchableOpacity>
-          <Text>提交订单</Text>
+          <Text style={styles.titleleftfont}>提交订单</Text>
         </View>
       }
     />
@@ -55,6 +55,14 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  titleleft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  titleleftfont: {
+    color: 'white',
+    fontSize: 18,
   },
 });
 

@@ -9,9 +9,7 @@ const ShopDatil = props => {
   const [shopdata, setshopdata] = useState([]);
   let childref = React.createRef();
   useEffect(() => {
-    console.log(props.shop.shop_sn);
     getDetailShop(props.shop.shop_sn).then(res => {
-      console.log(res);
       setshopdata(res.data);
     });
   }, []);

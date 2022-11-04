@@ -1,13 +1,14 @@
-import React, {useState, useImperativeHandle} from 'react';
+import React, {useState, useImperativeHandle, useContext} from 'react';
 import {BottomSheet, Button, ListItem} from '@rneui/themed';
 import {StyleSheet, View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Text, Card, Icon} from '@rneui/themed';
 import {useEffect} from 'react';
-
+import TestContext from '../../../store/context/index';
 const BottomSheetComponent = props => {
   const [isVisible, setIsVisible] = useState(false);
   const [shop_datil, setshopdatil] = useState({});
+  const ctx = useContext(TestContext);
   useImperativeHandle(props.open, () => {
     return {
       setIsVisible,
@@ -36,7 +37,9 @@ const BottomSheetComponent = props => {
           </View>
 
           <Button
-            onPress={() => setIsVisible(false)}
+            onPress={() => {
+              ctx.navigate('PlaceOrder', {...shop_datil}), setIsVisible(false);
+            }}
             buttonStyle={{
               borderRadius: 5,
               marginLeft: 0,
