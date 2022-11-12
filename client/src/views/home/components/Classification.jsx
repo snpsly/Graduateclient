@@ -11,19 +11,19 @@ import {getCommodity} from '../../../api/home';
 import {useEffect} from 'react';
 import {useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useIsFocused} from '@react-navigation/native';
+
 const Cards = props => {
+  const isFocused = useIsFocused();
   const [base64Image, setBase64Image] = useState();
   const [CommodityData, setCommodityData] = useState([]);
   useEffect(() => {
     getCommodity().then(function (response) {
-      setBase64Image(response.data.product_url);
+      // setBase64Image(response.data.product_url);
       setCommodityData(response.data);
     });
-  }, []);
-  const cardclick = id => {
-    alert(id);
-    console.log(props);
-  };
+  }, [isFocused]);
+
   return (
     <>
       <ScrollView>
@@ -57,7 +57,7 @@ const Cards = props => {
                             for (let i = 0; i < item.shop_stars; i++) {
                               items.push(
                                 <Ionicons
-                                  name="star"
+                                  name="flame-sharp"
                                   color="#EC6B3A"
                                   key={i}
                                 />,
@@ -72,7 +72,7 @@ const Cards = props => {
                             for (let i = 0; i < 5 - item.shop_stars; i++) {
                               items.push(
                                 <Ionicons
-                                  name="star"
+                                  name="flame-sharp"
                                   color="#E5E5E5"
                                   key={i + 5}
                                 />,

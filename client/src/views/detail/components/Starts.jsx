@@ -10,7 +10,12 @@ const starts = props => {
             const items = [];
             for (let i = 0; i < props.shop_stars; i++) {
               items.push(
-                <Ionicons name="star" color="#EC6B3A" key={i} size={20} />,
+                <Ionicons
+                  name="flame-sharp"
+                  color="#EC6B3A"
+                  key={i}
+                  size={20}
+                />,
               );
             }
             return items;
@@ -21,7 +26,12 @@ const starts = props => {
             const items = [];
             for (let i = 0; i < 5 - props.shop_stars; i++) {
               items.push(
-                <Ionicons name="star" color="#E5E5E5" key={i + 5} size={20} />,
+                <Ionicons
+                  name="flame-sharp"
+                  color="#E5E5E5"
+                  key={i + 5}
+                  size={20}
+                />,
               );
             }
             return items;

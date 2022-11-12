@@ -45,7 +45,7 @@ const ShopDatil = props => {
       {shopdata.map(item => {
         return (
           <TouchableOpacity
-            key={item.shop_title}
+            key={item.id}
             onPress={() => {
               childref.current.setIsVisible(true);
               childref.current.setshopdatil({

@@ -7,20 +7,32 @@ import {
   ToastAndroid,
 } from 'react-native';
 import React, {useState} from 'react';
-import {Input, Icon} from '@rneui/themed';
+import {Input, Icon, ButtonGroup} from '@rneui/themed';
 import {login} from '../../api/login';
+import store from '../../store/reduxstore';
 
 const Login = ({navigation}) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   function showToast() {
     ToastAndroid.show('用户密码错误', ToastAndroid.SHORT);
   }
+
   return (
     <View style={styles.body}>
       <StatusBar barStyle="light-content" backgroundColor="#FFFFFF" />
       <Text style={styles.title}>欢迎登录保洁预约系统</Text>
+      <ButtonGroup
+        buttons={['用户', '保洁']}
+        selectedIndex={selectedIndex}
+        onPress={value => {
+          setSelectedIndex(value);
+        }}
+        containerStyle={{marginBottom: 20}}
+      />
+
       <Input
         placeholder="请输入账户"
         onChangeText={setUsername}
@@ -35,12 +47,13 @@ const Login = ({navigation}) => {
       <Button
         title="登录"
         onPress={() => {
-          login({username, password})
+          login({username, password, selectedIndex})
             .then(res => {
-              console.log(res);
               if ('用户密码错误' === res.data) {
                 showToast();
               } else {
+                store.dispatch({type: 'ADD', data: {...res.data}});
+
                 navigation.navigate('IndexHome');
               }
             })

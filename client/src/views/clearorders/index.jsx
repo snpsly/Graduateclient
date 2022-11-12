@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import Orders from './components/orders';
-const Shopping = () => {
+const ClearOrders = () => {
   return (
     <View>
       <Orders></Orders>
@@ -9,4 +9,4 @@ const Shopping = () => {
   );
 };
 
-export default Shopping;
+export default ClearOrders;

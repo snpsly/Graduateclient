@@ -7,6 +7,7 @@ import Detail from '../views/detail';
 import PlaceOrder from '../views/placeorder';
 import Login from '../views/login';
 import Register from '../views/register';
+
 const Stack = createNativeStackNavigator();
 const AppRouter = () => {
   return (
@@ -20,6 +21,7 @@ const AppRouter = () => {
           },
         }}
       />
+
       <Stack.Screen name="Register" component={Register} options={{}} />
       <Stack.Screen
         name="IndexHome"
