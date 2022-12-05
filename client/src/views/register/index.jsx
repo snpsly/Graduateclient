@@ -3,6 +3,7 @@ import React from 'react';
 import {Input, Icon} from '@rneui/themed';
 import {useState} from 'react';
 import {register} from '../../api/login';
+import Tabbar from './components/Tarbar';
 const Register = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -11,7 +12,8 @@ const Register = ({navigation}) => {
   return (
     <View style={styles.body}>
       <StatusBar barStyle="light-content" backgroundColor="#FFFFFF" />
-      <Text style={styles.title}>注册</Text>
+      <Tabbar navigation={navigation}></Tabbar>
+
       <Input
         ref={input}
         placeholder="请输入账户"

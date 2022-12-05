@@ -15,17 +15,18 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 const Header = props => {
   return (
     <HeaderRNE
-      backgroundColor="#FFCF07"
+      backgroundColor="white"
       leftComponent={
-        <TouchableOpacity
-          style={{marginLeft: 10}}
-          onPress={() => {
-            props.navigation.goBack();
-          }}>
-          <Ionicons name="arrow-back-sharp" color="white" size={30} />
-        </TouchableOpacity>
+        <View style={styles.titleleft}>
+          <TouchableOpacity
+            style={{marginLeft: 10}}
+            onPress={() => {
+              props.navigation.goBack();
+            }}>
+            <Ionicons name="arrow-back-sharp" color="black" size={30} />
+          </TouchableOpacity>
+        </View>
       }
-      rightComponent={<View style={styles.headerRight}></View>}
     />
   );
 };
@@ -53,6 +54,14 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  titleleft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  titleleftfont: {
+    color: 'white',
+    fontSize: 18,
   },
 });
 

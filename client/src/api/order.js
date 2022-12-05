@@ -14,3 +14,10 @@ export function getorders(id) {
     data: {user_id: id},
   });
 }
+export function closeorder(id) {
+  return request({
+    url: 'order/closeorder',
+    method: 'post',
+    data: {id},
+  });
+}

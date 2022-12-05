@@ -34,6 +34,10 @@ const BottomSheetComponent = props => {
 
               {shop_datil.shop_price}
             </Text>
+            <Text style={{marginBottom: 10}}>
+              <Text style={{color: '#000000'}}>时间 </Text>
+              {shop_datil.shop_date}小时
+            </Text>
           </View>
 
           <Button

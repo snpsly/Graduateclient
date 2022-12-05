@@ -53,6 +53,7 @@ const ShopDatil = props => {
                 shopdatil_title: item.shop_title,
                 shop_num: item.shop_num,
                 shop_price: item.shop_price,
+                shop_date: item.shop_date,
               });
             }}>
             <View style={styles.datil}>
@@ -65,6 +66,8 @@ const ShopDatil = props => {
               <View style={styles.datilfont}>
                 <Text style={styles.deailtitlefont}>{item.shop_title}</Text>
                 <Text>{item.shop_num}</Text>
+
+                <Text>{item.shop_date}小时</Text>
                 <Text style={styles.fontcolor}>
                   <Ionicons name="md-logo-yen" color="#E36B1F" />
                   {item.shop_price}

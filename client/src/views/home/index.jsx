@@ -8,7 +8,6 @@ const Home = ({route, navigation}) => {
   return (
     <View>
       <Search></Search>
-
       <Classification navigation={navigation}></Classification>
     </View>
   );

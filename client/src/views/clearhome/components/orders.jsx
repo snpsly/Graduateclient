@@ -9,7 +9,7 @@ import {Button} from '@rneui/base';
 const Orders = () => {
   const isFocused = useIsFocused();
   const [ordersdata, setOrdersdata] = useState([]);
-  const {id} = store.getState();
+  const {id} = store.getState().userReducer;
   const [add, setadd] = useState(0);
   useEffect(() => {
     getclearorders().then(res => {

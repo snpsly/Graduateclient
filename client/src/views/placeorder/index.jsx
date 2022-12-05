@@ -12,22 +12,33 @@ import DatePicker from 'react-native-date-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {ListItem, Avatar, Input} from '@rneui/themed';
 import Datecom from './components/datecom';
-import {getYMD} from '../../api/date';
+import {getYMD, changeTimes, timestampToTime} from '../../api/date';
 import store from '../../store/reduxstore/index';
 import {pushorder} from '../../api/order';
+import {useEffect} from 'react';
+import {useIsFocused} from '@react-navigation/native';
 const PlaceOrder = ({navigation, route}) => {
-  console.log(route.params);
-
-  const {shop_title, shop_num, shop_price, shop_sn, shopdatil_title} =
-    route.params;
+  const {
+    shop_title,
+    shop_num,
+    shop_price,
+    shop_sn,
+    shopdatil_title,
+    shop_date,
+  } = route.params;
   const [name, setname] = useState('');
   const [phone, setphone] = useState('');
   const [adress, setadress] = useState('');
   const [date, setDate] = useState(new Date());
-  console.log(route.params);
-  const {id} = store.getState();
-
+  const isFocused = useIsFocused();
+  const {id} = store.getState().userReducer;
   const [open, setOpen] = useState(false);
+  useEffect(() => {
+    store.dispatch({type: 'clickmap', data: ''});
+  }, []);
+  useEffect(() => {
+    setadress(store.getState().addressReducer.clickaddress);
+  }, [isFocused]);
   return (
     <View>
       <Tabbar navigation={navigation}></Tabbar>
@@ -44,12 +55,23 @@ const PlaceOrder = ({navigation, route}) => {
           <TouchableOpacity
             onPress={() => {
               setOpen(true);
+              console.log(date);
             }}>
             <Text>
               {getYMD(date)}
               <Ionicons name="ios-chevron-forward" color="#BBBBBB" />
             </Text>
           </TouchableOpacity>
+        </View>
+        <View style={styles.shopname}>
+          <Text>花费时间</Text>
+          <Text>{shop_date}小时</Text>
+        </View>
+        <View style={styles.shopname}>
+          <Text>结束时间</Text>
+          <Text>
+            {timestampToTime(changeTimes(getYMD(date)) + shop_date * 60 * 60)}
+          </Text>
         </View>
         <View style={styles.shopname}>
           <Text>姓名</Text>
@@ -60,7 +82,9 @@ const PlaceOrder = ({navigation, route}) => {
         <View style={styles.shopname}>
           <Text>手机号</Text>
           <TextInput
-            onChangeText={text => setphone(text)}
+            onChangeText={text => {
+              setphone(text);
+            }}
             value={phone}></TextInput>
         </View>
         <View style={styles.shopname}>
@@ -68,22 +92,29 @@ const PlaceOrder = ({navigation, route}) => {
           <TextInput
             onChangeText={text => setadress(text)}
             value={adress}></TextInput>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Openaddress');
+            }}>
+            <Ionicons name="md-location-sharp" color="#BBBBBB" size={30} />
+          </TouchableOpacity>
         </View>
       </View>
       <Button
         title="提交"
         onPress={() => {
-          console.log(123111);
           pushorder({
             user_id: id,
             shop_title,
             shop_price,
-            date: getYMD(date),
-
+            date: changeTimes(getYMD(date)),
+            date_time: shop_date,
+            date_pause: changeTimes(getYMD(date)) + shop_date * 60 * 60,
             user_address: adress,
             shop_num,
             user_phone: phone,
             user_name: name,
+            clean_name: '',
           }).then(navigation.navigate('IndexHome'));
         }}></Button>
       <DatePicker

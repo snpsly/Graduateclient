@@ -11,7 +11,7 @@ import HomeClearScreen from '../views/clearhome/index';
 import ClearOrdersScreen from '../views/clearorders/index';
 const Index = () => {
   const Tab = createBottomTabNavigator();
-  const {identity} = store.getState();
+  const {identity} = store.getState().userReducer;
   return (
     <>
       <StatusBar backgroundColor={'#FFCF07'} />
@@ -25,7 +25,7 @@ const Index = () => {
               route.name === 'Home'
                 ? '首页'
                 : route.name === 'Message'
-                ? '消息页'
+                ? '客服'
                 : route.name === 'Shopping'
                 ? '订单'
                 : '我的',
@@ -48,11 +48,7 @@ const Index = () => {
           })}>
           <Tab.Screen name="Home" component={HomeScreen} />
 
-          <Tab.Screen
-            name="Message"
-            component={MessageScreen}
-            options={{tabBarBadge: 3}}
-          />
+          <Tab.Screen name="Message" component={MessageScreen} />
 
           <Tab.Screen name="Shopping" component={ShoppingScreen} />
           <Tab.Screen name="Me" component={MeScreen} />
@@ -84,7 +80,6 @@ const Index = () => {
             tabBarActiveTintColor: '#FFCF07',
             tabBarInactiveTintColor: 'gray',
           })}>
-          <Tab.Screen name="HomeClear" component={HomeClearScreen} />
           <Tab.Screen name="ClearOrder" component={ClearOrdersScreen} />
           <Tab.Screen name="Me" component={MeScreen} />
         </Tab.Navigator>

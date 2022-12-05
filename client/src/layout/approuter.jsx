@@ -7,7 +7,7 @@ import Detail from '../views/detail';
 import PlaceOrder from '../views/placeorder';
 import Login from '../views/login';
 import Register from '../views/register';
-
+import Openaddress from '../views/openaddress';
 const Stack = createNativeStackNavigator();
 const AppRouter = () => {
   return (
@@ -22,7 +22,15 @@ const AppRouter = () => {
         }}
       />
 
-      <Stack.Screen name="Register" component={Register} options={{}} />
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{
+          header: () => {
+            return null;
+          },
+        }}
+      />
       <Stack.Screen
         name="IndexHome"
         component={Index}
@@ -44,6 +52,15 @@ const AppRouter = () => {
       <Stack.Screen
         name="PlaceOrder"
         component={PlaceOrder}
+        options={{
+          header: () => {
+            return null;
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Openaddress"
+        component={Openaddress}
         options={{
           header: () => {
             return null;

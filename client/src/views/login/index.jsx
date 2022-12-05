@@ -10,8 +10,10 @@ import React, {useState} from 'react';
 import {Input, Icon, ButtonGroup} from '@rneui/themed';
 import {login} from '../../api/login';
 import store from '../../store/reduxstore';
-
+import {useDispatch} from 'react-redux';
 const Login = ({navigation}) => {
+  const dispatch = useDispatch();
+
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -52,7 +54,7 @@ const Login = ({navigation}) => {
               if ('用户密码错误' === res.data) {
                 showToast();
               } else {
-                store.dispatch({type: 'ADD', data: {...res.data}});
+                dispatch({type: 'ADD', data: {...res.data}});
 
                 navigation.navigate('IndexHome');
               }

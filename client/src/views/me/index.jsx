@@ -3,7 +3,7 @@ import React from 'react';
 import store from '../../store/reduxstore';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const Me = ({navigation}) => {
-  const {id, name} = store.getState();
+  const {id, name} = store.getState().userReducer;
   return (
     <View>
       <View style={styles.active}>

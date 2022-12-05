@@ -86,7 +86,7 @@ const Cards = props => {
                         <Ionicons name="happy-outline" color="#F9C886" />
                         {item.shop_evaluate}
                       </Text>
-                      <Text>
+                      {/* <Text>
                         <Ionicons name="md-thumbs-up" color="#F9C886" />
                         {item.shop_descript}
                       </Text>
@@ -101,7 +101,7 @@ const Cards = props => {
                       <Text>
                         <Ionicons name="md-logo-yen" color="#E36B1F" />
                         {item.shop_price1}
-                      </Text>
+                      </Text> */}
                     </View>
                   </View>
                 </Card>
